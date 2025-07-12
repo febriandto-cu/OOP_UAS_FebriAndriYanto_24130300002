@@ -15,10 +15,10 @@ use App\UseCases\CreatePlayerUseCase;
 $personFactory = new PersonFactoryImpl();
 $playerData = [
     'personId'    => 'P001',
-    'firstName'   => 'Ronaldo',
-    'lastName'    => 'Wati',
-    'dateOfBirth' => new DateTime('1945-06-24'),
-    'nationality' => 'Argentina',
+    'firstName'   => 'Febri',
+    'lastName'    => 'Andri Yanto',
+    'dateOfBirth' => new DateTime('1997-06-24'),
+    'nationality' => 'Indonesia',
     'teamId'      => 'T001',
     'position'    => 'Forward',
     'jerseyNumber'=> 10,
@@ -33,54 +33,104 @@ echo "Player: " . $player->getFullName() . PHP_EOL;
 
 $coach = $personFactory->createCoach([
     'personId'    => 'C001',
-    'firstName'   => 'Pep',
-    'lastName'    => 'Si',
+    'firstName'   => 'Hedi',
+    'lastName'    => 'Setiawan',
     'dateOfBirth' => new DateTime('1971-01-18'),
-    'nationality' => 'Spain',
+    'nationality' => 'Indonesia',
     'teamId'      => 'T001',
     'role'        => 'Head Coach',
-    'licenseLevel'=> 'UEFA Pro'
+    'licenseLevel'=> '1'
 ]);
 echo "Coach: " . $coach->getFullName() . PHP_EOL;
 
 $staff = $personFactory->createStaff([
     'personId'    => 'S001',
-    'firstName'   => 'Maria',
+    'firstName'   => 'Budi',
     'lastName'    => 'Gonzalez',
     'dateOfBirth' => new DateTime('1985-03-15'),
-    'nationality' => 'Spain',
+    'nationality' => 'Indonesia',
     'clubId'      => 'CL001',
     'role'        => 'Physio',
     'department'  => 'Medical'
 ]);
 echo "Staff: " . $staff->getFullName() . PHP_EOL;
 
-$stadium = new Stadium('ST001', 'Camp Nou', 99354, 'Barcelona, Spain');
-$club = new Club('CL001', 'FC Barcelona', 'ST001', new DateTime('1899-11-29'), 100000000.0, 'La Liga');
-$team = new Team('T001', 'CL001', 'Barcelona A', 'La Liga', 'First Division');
+$stadium = new Stadium(
+    'ST001', 
+    'Gelora Brantas Stadium', 
+    1000, 
+    'Jl. Stadion No.1, Jaksel',
+);
+
+$club = new Club(
+    'CL001', 
+    'FC Cakrawala Muda', 
+    'ST001', 
+    new DateTime('2025-11-29'),
+    100000000.0, 
+    'La Campus'
+);
+
+$team = new Team(
+    'T001', 
+    'CL001', 
+    'Team1 Cakrawala', 
+    'La Campus', 
+    'Falkutas Ilmu Komputer'
+);
 
 echo "Stadium: {$stadium->getName()} \n";
 echo "Club: {$club->getName()}  \n";
 
 $sponsor = new Sponsor(
-    'SP001', 'Rakuten', 'Hiroshi Mikitani', '1234567890', 'contact@rakuten.com',
-    20000000.0, new DateTime('2022-07-01'), new DateTime('2025-06-30')
+    'SP001', 
+    'Indomaret', 
+    'Bambang Supriyadi', 
+    '1234567890', 
+    'contact@indomart.com',
+    20000000.0, 
+    new DateTime('2022-07-01'), 
+    new DateTime('2025-06-30')
 );
 
 $contract = new Contract(
-    'CT001', 'CL001', 'P001',
-    new DateTime('2024-07-01'), new DateTime('2025-06-30'),
-    10000000.0, 'No injury break'
+    'CT001',
+     'CL001',
+      'P001',
+    new DateTime('2024-07-01'),
+     new DateTime('2025-06-30'),
+    10000000.0,
+     'No injury break'
 );
 
 $match = new Match(
-    'M001', 'T001', 'T002', new DateTime('2025-09-12'), '20:00',
-    'ST001', 0, 0, 'La Liga', 'SE001'
+    'M001',
+     'T001',
+      'T002',
+       new DateTime('2025-09-12'),
+        '20:00',
+    'ST001',
+     0,
+      0,
+       'La Campus',
+        'SE001'
 );
 
-$season = new Season('SE001', 2025, 'La Liga', new DateTime('2025-08-15'), new DateTime('2026-05-31'));
+$season = new Season(
+    'SE001',
+     2025,
+      'La Campus',
+       new DateTime('2025-08-15'),
+        new DateTime('2026-05-31')
+);
+
 $trainingSession = new TrainingSession(
-    'TS001', 'T001', new DateTime('2025-07-15'), '10:00', 'Ciutat Esportiva', 'Tactical'
+    'TS001',
+        'T001',
+    new DateTime('2025-07-15'),
+    '10:00',
+    'Stadium Ciputat',
+        'Tactical'
 );
 
 echo "Sponsor: {$sponsor->getName()} \n";
